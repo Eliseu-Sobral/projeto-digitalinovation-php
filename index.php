@@ -1,46 +1,23 @@
-<?php
-$categorias = [];
-$categorias [] = "infantil";
-$categorias [] = "Adolescente";
-$categorias [] = "Adulto";
-$categorias [] = "Idoso";
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulário de cadastro </h1>
+    <form action="script.php" class="formulario" method="POST">
+        <label for="">Nome :</label>
+        <input type="text" name="nome" autocomplete="off">
+        <label for="">Idade :</label>
+        <input type="text" name="idade" autocomplete="off">
+        <input type="submit" value="Cadastrar"><br><br>
 
+    </form>
 
-$nome = "Eduardo";
-$idade = 13;
-
-if($idade >= 6 && $idade <= 12){
-
-    for($i = 0; $i <= count($categorias); $i++){
-
-        if($categorias[$i] == "infantil"){
-            echo "O nadador, $nome, compete na categora infantil";
-        }
-            
-        
-    }
-}else if($idade >= 13 && $idade <=18){
-
-    for($i = 0; $i <= count($categorias); $i++){
-    if($categorias[$i] == "Adolescente"){
-        echo "O nadador, $nome, compete na categora Adolescente";
-    }
-        
-    
-}
-}else if($idade >=19 && $idade <= 59){
-
-    for($i = 0; $i <= count($categorias); $i++){
-    if($categorias[$i] == "Adolescente"){
-        echo "O nadador, $nome, compete na categora Adulto";
-    }
-        
-    
-}
-}else{
-    echo "O nadador, $nome, compete na categoria Idoso";
-}
-
-
-?>
+    <h2>Cadastrados</h2>
+</body>
+</html>
 
