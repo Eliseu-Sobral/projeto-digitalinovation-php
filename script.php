@@ -1,7 +1,7 @@
 <?php
 include ("index.php");
 
-session_start();
+
 $categorias = [];
 $categorias[] = "infantil";
 $categorias[] = "Adolescente";
