@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,6 +12,10 @@
 </head>
 <body>
     <h1>Formulário de cadastro </h1>
+    <?php
+    $mensagemDeErro = isset($_SESSION["mensagem-de-erro"]);
+
+    ?>
     <form action="script.php" class="formulario" method="POST">
         <label for="">Nome :</label>
         <input type="text" name="nome" autocomplete="off">

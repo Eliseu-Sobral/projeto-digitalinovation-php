@@ -1,5 +1,7 @@
 <?php
 include ("index.php");
+
+session_start();
 $categorias = [];
 $categorias[] = "infantil";
 $categorias[] = "Adolescente";
@@ -22,7 +24,7 @@ $i = 0;
 
 //Validação de dados
 if(empty($nome)){
-    echo '<script>alert("'.$msg_nome.'");</script>';
+    $_SESSION["mensagem-de-erro"] = "o nome não pode estar vazio";
     return;
 }elseif(empty($idade)){
     echo '<script>alert("'.$msg_idade.'");</script>';
