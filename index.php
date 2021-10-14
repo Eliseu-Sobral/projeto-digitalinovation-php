@@ -12,10 +12,7 @@ session_start();
 </head>
 <body>
     <h1>Formulário de cadastro </h1>
-    <?php
-    $mensagemDeErro = isset($_SESSION["mensagem-de-erro"]);
-
-    ?>
+    
     <form action="script.php" class="formulario" method="POST">
         <label for="">Nome :</label>
         <input type="text" name="nome" autocomplete="off">
@@ -26,6 +23,18 @@ session_start();
     </form>
 
     <h2>Cadastrados</h2>
+
+    <?php
+    $mensagemDeSucesso = isset($_SESSION["mensagem-de-sucesso"]) ? $_SESSION["mensagem-de-sucesso"] : "";
+        if(!empty($mensagemDeSucesso)){
+            echo $mensagemDeSucesso;
+        }
+    $mensagemDeErro = isset($_SESSION["mensagem-de-erro"]) ? $_SESSION["mensagem-de-erro"] : "";
+        if(!empty($mensagemDeErro)){
+            echo $mensagemDeErro;
+            $_SESSION["mensagem-de-erro"] = "";
+        }
+    ?>
 </body>
 </html>
 

@@ -1,7 +1,7 @@
 <?php
-include ("index.php");
 
 
+session_start();
 $categorias = [];
 $categorias[] = "infantil";
 $categorias[] = "Adolescente";
@@ -10,41 +10,45 @@ $categorias[] = "Idoso";
 
 
 
-$msg_nome = "O nome não pode estar vazio";
-$msg_idade = "A idade não pode estar vazia";
-$err_nome = "O nome é muito pequeno";
-$err_nome2 = "O nome é muito Grande";
-$err_idade3 = "A idade deve ser um Numero";
-$err_idade4 = "Já viu idade com letras o cegonha kkkkkk";
-$err_idade = "A idade deve ser entre 0 e 120 anos ";
-$err_idade2 = "Tu já Morreu Brother";
+$msg_nome = '<script>alert("O nome não pode estar vazio");</script>';
+$msg_idade = '<script>alert("A idade não pode estar vazia");</script>';
+$err_nome = '<script>alert("O nome é muito pequeno");</script>';
+$err_nome2 = '<script>alert("O nome é muito grande");</script>';
+$err_idade3 = '<script>alert("A idade deve ser um numero");</script>';
+$err_idade4 = '<script>alert("Já viu idade com letras, ooo cegonha kkkkkkk");</script>';
+$err_idade = '<script>alert("A idade deve ser entre 0 e 120 anos");</script>';
+$err_idade2 = '<script>alert("Tu já morreu brother");</script>';
 $nome = $_POST["nome"];
 $idade = $_POST['idade'];
 $i = 0;
 
 //Validação de dados
 if(empty($nome)){
-    $_SESSION["mensagem-de-erro"] = "o nome não pode estar vazio";
+    $_SESSION["mensagem-de-erro"] = $msg_nome;
+    header("location:index.php");
     return;
 }elseif(empty($idade)){
-    echo '<script>alert("'.$msg_idade.'");</script>';
+    $_SESSION["mensagem-de-erro"] = $msg_idade;
+    header("location:index.php");
     return;
 }
 
 if(strlen($nome)<3){
-    echo '<script>alert("'.$err_nome.'");</script>';
+    $_SESSION["mensagem-de-erro"] = $err_nome;
+    header("location:index.php");
     return;
 }elseif($idade>120){
-    echo '<script>alert("'.$err_idade.'");</script>';
-    echo '<script>alert("'.$err_idade2.'");</script>';
+    $_SESSION["mensagem-de-erro"] = $err_idade2;
+    header("location:index.php");
     return;
 
 }elseif(strlen($nome)>40){
-    echo '<script>alert("'.$err_nome2.'");</script>';
+    $_SESSION["mensagem-de-erro"] = $err_nome2;
+    header("location:index.php");
     return;
 }elseif(!is_numeric($idade)){
-    echo '<script>alert("'.$err_idade3.'");</script>';
-    echo '<script>alert("'.$err_idade4.'");</script>';
+    $_SESSION["mensagem-de-erro"] = $err_idade3;
+    header("location:index.php");
     return;
 
 }
@@ -57,7 +61,10 @@ if($idade<=12){
 
         if($categorias[$i] == "infantil")
         {
-            echo 'O nadador '.$nome. ' compete na categoria ' .$categorias[$i];
+            $_SESSION["mensagem-de-sucesso"] = 'O nadador '.$nome. ' compete na categoria ' .$categorias[$i];
+            header("location:index.php");
+            return;
+            
         }else{
 
         }
@@ -69,7 +76,10 @@ if($idade<=12){
     for($i = 0; $i < count($categorias); $i++){
         if($categorias[$i] == "Adolescente")
         {
-            echo 'O nadador, '. $nome.', compete na categora '.$categorias[$i];
+            $_SESSION["mensagem-de-sucesso"] = 'O nadador '.$nome. ' compete na categoria ' .$categorias[$i];
+            header("location:index.php");
+            return;
+             
         }
         
     
@@ -77,14 +87,19 @@ if($idade<=12){
 }else if($idade <= 59){
 
     for($i = 0; $i <= count($categorias); $i++){
-        if ($categorias[$i] == "Adulto"){
-            echo 'O nadador '. $nome. ', compete na categora '.$categorias[$i];
+        if ($categorias[$i] == "Adulto")
+        {
+            $_SESSION["mensagem-de-sucesso"] = 'O nadador '.$nome. ' compete na categoria ' .$categorias[$i];
+            header("location:index.php");
+            return;
     }
         
     
 }
 }else{
-    echo "O nadador, $nome, compete na categoria Idoso";
+    $_SESSION["mensagem-de-sucesso"] = 'O nadador '.$nome. ' compete na categoria Idoso' ;
+            header("location:index.php");
+            return;
 }
 
 
